@@ -1,0 +1,9 @@
+body{
+    font-family: 'Roboto Slab', serif;
+}
+.glc-navbar{
+    background-color: #37b494;
+}
+.glc-navbar a{
+    color: #000;
+}
