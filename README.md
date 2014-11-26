@@ -20,11 +20,9 @@ GCLab
 - http://evals.fr/ (mp : P888)
 - http://www.greencodelab-challenge.org/wp-content/uploads/2014/10/Green-Code-Lab-Challenge-Preparation.pdf
 - http://gclchallenge.forumactif.org/
-
-- Nom d'utilisateur: MakeItGreen
-- Mot de passe: C3d9x4lp
-
-
+  - Nom d'utilisateur: MakeItGreen
+  - Mot de passe: C3d9x4lp
+  - 
 JavaScript
 -----------
 - exemple - http://www.gmarwaha.com/jquery/jcarousellite/
