@@ -1,24 +1,3 @@
-/**
-	Juizy Slideshow
-	@author: Geoffrey Crofte
-	@date: 2011-12-07
-	@from: self work http://creativejuiz.fr/trytotry
-	@license: CreativeCommons (BY)
-	
-	
-	************* Changelog *************
-	
-	** v.1.1.1 - 2012-02-27
-	- Figcaption element hidden when you take the control
-	
-	** v.1.1.0 - 2011-12-31
-	- Caption of figure (figcaption element) display improvement
-	
-	** v.1.0.0 - 2011-12-07
-	- First version
-	
-*/
-
 html {
 	background-color: #e4dfd2;
 	background-image: -webkit-radial-gradient(center 425px 45deg, circle closest-side, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 30%),
