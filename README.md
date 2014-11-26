@@ -22,7 +22,7 @@ GCLab
 - http://gclchallenge.forumactif.org/
   - Nom d'utilisateur: MakeItGreen
   - Mot de passe: C3d9x4lp
-  - 
+
 JavaScript
 -----------
 - exemple - http://www.gmarwaha.com/jquery/jcarousellite/
