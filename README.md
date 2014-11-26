@@ -16,7 +16,7 @@ Le serveur :
 
 Les liens :
 
-GCLab :
+GCLab
 =============
 
 http://ranks.greencodelab-challenge.org/
@@ -28,7 +28,7 @@ http://www.greencodelab-challenge.org/wp-content/uploads/2014/10/Green-Code-Lab-
 http://gclchallenge.forumactif.org/
 
 
-JavaScript :
+JavaScript
 ==================
 
 exemple - http://www.gmarwaha.com/jquery/jcarousellite/
