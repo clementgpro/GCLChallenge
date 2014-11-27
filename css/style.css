@@ -22,3 +22,22 @@
     background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4);
     vertical-align: bottom;
 }
+
+/* Bullet Navigator Skin Begin */
+/*
+            .jssorb10 div           (normal)
+            .jssorb10 div:hover     (normal mouseover)
+            .jssorb10 .av           (active)
+            .jssorb10 .av:hover     (active mouseover)
+            .jssorb10 .dn           (mousedown)
+        */
+ .jssorb11 div, .jssorb11 div:hover
+ {
+     background: url(../img/not-selected.png) no-repeat;
+     cursor: pointer;
+ }
+.jssorb11 .av
+{
+    background: url(../img/selected.png) no-repeat;
+    cursor: pointer;
+}

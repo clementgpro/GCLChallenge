@@ -83,13 +83,18 @@
                      <span u="arrowright" class="jssora01r" style="width: 54px; height: 54px; top: 123px; right: 0px; z-index:100;">
                      </span>
                     <!-- Arrow Navigator Skin End -->
-
                 </div>
+                <div u="navigator" class="jssorb11" style="position: relative; top:310px; bottom: 16px; right: 6px; width:25px; height:25px;">
+                    <!-- bullet navigator item prototype -->
+                    <div u="prototype" style="POSITION: absolute; WIDTH: 25px; HEIGHT: 25px;"></div>
+                </div>
+                <!-- Bullet Navigator Skin End -->
                 <!-- Trigger -->
                 <script>jssor_slider1_starter('slider1_container');</script>
             </div>
         </div>
     </div>
+    <div class="row" style="height:30px"> <!-- Place pour les bullets + numéro image--></div>
     <div class="row">
         <div class="col-md-4">
             <h2>Who will be the best Green developer in this latest edition ? </h2>
@@ -156,8 +161,20 @@
                 $PlayInMode: 1,
                 $PlayOutMode: 3
             },
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                $SpacingX: 10,                                  //[Optional] Horizontal space between each item in pixel, default value is 0
+                $SpacingY: 10,                                  //[Optional] Vertical space between each item in pixel, default value is 0
+                $Orientation: 1
+            },
             //Avance automatiquement les images
-            $AutoPlay: true
+            $AutoPlay: true,
+            //3 secondes entre chaque image
+            $SlideDuration: 3000
         };
         var jssor_slider1 = new $JssorSlider$('slider1_container', options);
     });
