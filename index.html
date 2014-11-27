@@ -43,12 +43,37 @@
         <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px;">
                 <!-- Slides Container -->
                 <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
-                    <div><img u="image" src="img/bach_creek_river.jpg" width="900" height="360" /></div>
-                    <div><img u="image" src="img/canoe_water_nature.jpg" width="900" height="360" /></div>
-                    <div><img u="image" src="img/guyana_sky_clouds.jpg" width="900" height="360" /></div>
-                    <div><img u="image" src="img/hawaii_sky_clouds.jpg" width="900" height="360" /></div>
-                    <div><img u="image" src="img/water_nature_river.jpg" width="900" height="360" /></div>
-                    <div><img u="image" src="img/gclc.png" width="900" height="360" /></div>
+                    <div><img u="image" src="img/bach_creek_river.jpg" width="900" height="360" />
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
+                    <div><img u="image" src="img/canoe_water_nature.jpg" width="900" height="360" />
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
+                    <div>
+                        <img u="image" src="img/guyana_sky_clouds.jpg" width="900" height="360"/>
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
+                    <div><img u="image" src="img/hawaii_sky_clouds.jpg" width="900" height="360" />
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
+                    <div><img u="image" src="img/water_nature_river.jpg" width="900" height="360" />
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
+                    <div><img u="image" src="img/gclc.png" width="900" height="360" />
+                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                            Ceci est une caption en dur
+                        </div>
+                    </div>
 
                     <!-- Arrow Navigator Skin Begin -->
                         <!-- Arrow Left -->
@@ -57,7 +82,8 @@
                         <!-- Arrow Right -->
                      <span u="arrowright" class="jssora01r" style="width: 54px; height: 54px; top: 123px; right: 0px; z-index:100;">
                      </span>
-                <!-- Arrow Navigator Skin End -->
+                     <!-- Arrow Navigator Skin End -->
+
                 </div>
                 <!-- Trigger -->
                 <script>jssor_slider1_starter('slider1_container');</script>
@@ -106,11 +132,31 @@ Come and share the adventure.</p>
 <script src="js/jssor.slider.mini.js"></script>
     <script>
         jQuery(document).ready(function ($) {
+            //Define an array of slideshow transition code
+            var _SlideshowTransitions = [
+                {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseLinear},$Opacity:2 },
+                 {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$JssorEasing$.$EaseInOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}}];
+            //There is no caption plays random transition
+            var _CaptionTransitions = [];
+
             var options = {
                 $ArrowNavigatorOptions: {
                     $Class: $JssorArrowNavigator$,
                     $ChanceToShow: 2
                 },
+                $SlideshowOptions: {
+                    $Class: $JssorSlideshowRunner$,
+                    $Transitions: _SlideshowTransitions,
+                    $TransitionsOrder: 1,
+                    $ShowLink: true
+                },
+                $CaptionSliderOptions: {
+                    $Class: $JssorCaptionSlider$,
+                    $CaptionTransitions: _CaptionTransitions,
+                    $PlayInMode: 1,
+                    $PlayOutMode: 3
+                },
+                //Avance automatiquement les images
                 $AutoPlay: true
             };
             var jssor_slider1 = new $JssorSlider$('slider1_container', options);
