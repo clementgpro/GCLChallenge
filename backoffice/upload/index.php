@@ -21,26 +21,36 @@ if(isset($_POST["submit"])) {
 	// Check if image file is a actual image or fake image
     $check = getimagesize($imgUploaded);
     if($check !== false) {
-	
        move_uploaded_file($imgUploaded, $imgDest);
 		
-		// resize the image to match a width of 900px
-	   resizeWithProportion($imgDest, $imgDest);
-	   // crop the image to match the height of 360px
-	   resizeCrop($imgDest, $imgDest);
+       $destkopImg = pathinfo($imgDest)['dirname']."/".pathinfo($imgDest)['filename']."_desktop.".pathinfo($imgDest)['extension'];
+       $mobileImg = pathinfo($imgDest)['dirname']."/".pathinfo($imgDest)['filename']."_mobile.".pathinfo($imgDest)['extension'];
+       
+		// resize the image to match a width of 900px (desktop)
+	   resizeWithProportion($imgDest, $destkopImg, 900);
+	   // crop the image to match the height of 360px (desktop)
+	   resizeCrop($destkopImg, $destkopImg, 360);
+	   
+	   // resize the image to match a width of 320px (mobile)
+	  resizeWithProportion($imgDest, $mobileImg, 320);
+	   // crop the image to match the height of 128px (mobile)
+	  resizeCrop($mobileImg, $mobileImg, 128);
+	  
+	  // remove uploaded file
+	  unlink($imgDest);
 	   
     } else {
         echo "File is not an image.";
     }
 }
 
-function resizeWithProportion($imgSource, $imgDest) {
+function resizeWithProportion($imgSource, $imgDest, $widthSize) {
 	
 	 $img_size = getimagesize($imgSource);
      $W_Src = $img_size[0]; // largeur
      $H_Src = $img_size[1]; // hauteur
 	
-	$W = 900;
+	$W = $widthSize;
     $H = $W * ($H_Src / $W_Src);    
 	
 	$Ress_Dst = imagecreatetruecolor($W,$H);
@@ -54,13 +64,13 @@ function resizeWithProportion($imgSource, $imgDest) {
     imagedestroy ($Ress_Dst);
 }
 
-function resizeCrop($imgSource, $imgDest) {
+function resizeCrop($imgSource, $imgDest, $heightSize) {
 	
 	 $img_size = getimagesize($imgSource);
      $W_Src = $img_size[0]; // largeur
      $H_Src = $img_size[1]; // hauteur
     
-	$H = 360;
+	$H = $heightSize;
     $W = $W_Src;
 	
 	$Ress_Dst = imagecreatetruecolor($W,$H);
