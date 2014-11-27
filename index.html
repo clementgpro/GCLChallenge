@@ -14,20 +14,7 @@
 <link href="css/style.css." rel="stylesheet">
     
     <!-- Scripts -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.mi.js"></script>
-<script src="js/jssor.slider.mini.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            var options = {
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$,
-                    $ChanceToShow: 2
-                },
-                $AutoPlay: true
-            };
-            var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-        });
-    </script>
+
 </head>
 <body>
 <nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
@@ -108,4 +95,19 @@ Come and share the adventure.</p>
 </div>
 </body>
 <!-- We've included jQuery. But you can of course use any other lib! -->
+<!--script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.mi.js"></script-->
+<script src="js/jquery-1.9.1.min.js"></script>    
+<script src="js/jssor.slider.mini.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var options = {
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $ChanceToShow: 2
+                },
+                $AutoPlay: true
+            };
+            var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+        });
+    </script>
 </html>
