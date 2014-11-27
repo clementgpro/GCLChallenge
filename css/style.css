@@ -15,5 +15,5 @@
     background: url("../img/sprite-square.png") no-repeat;
     overflow:hidden;
 }
-.jssora01l .jssora01ldn { background-position: 0px -110px; }
-.jssora01r .jssora01rdn { background-position: 0px -55px; }
+.jssora01l, .jssora01ldn { background-position: 0px -110px; }
+.jssora01r, .jssora01rdn { background-position: 0px -55px; }
