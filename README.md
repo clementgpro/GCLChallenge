@@ -30,4 +30,10 @@ JavaScript
 - outils - http://www.smashingmagazine.com/2009/02/08/50-extremely-useful-javascript-tools/
 - tuto carrousel - https://www.youtube.com/watch?v=Xr8xkFdpAd8
 
+Environment
+----------------
+- Application dev : http://192.168.1.186/
+- Jenkis : http://192.168.1.186:8080/
+- Sonar : http://192.168.1.186:9000/
+
 
