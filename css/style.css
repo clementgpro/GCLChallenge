@@ -1,0 +1,21 @@
+/* jssor slider arrow navigator skin 01 css */
+/*
+.jssora01l              (normal)
+.jssora01r              (normal)
+.jssora01l:hover        (normal mouseover)
+.jssora01r:hover        (normal mouseover)
+.jssora01ldn            (mousedown)
+.jssora01rdn            (mousedown)
+*/
+.jssora01l, .jssora01r, .jssora01ldn, .jssora01rdn
+{
+    position: absolute;
+    cursor: pointer;
+    display: block;
+    background: url("../img/sprite-square.png") no-repeat;
+    overflow:hidden;
+}
+.jssora01l { background-position: 0px -110px; }
+.jssora01r { background-position: 0px -55px; }
+.jssora01ldn { background-position: 0px -110px; }
+.jssora01rdn { background-position: 0px -55px; }

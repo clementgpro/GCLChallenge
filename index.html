@@ -1,105 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+<!-- JQuery est utilise pour le slider -->
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Simple dummy webpage to hack">
-<meta name="author" content="Green Code Lab Challenge">
-
-<title>Green Code Lab Challenge 2014 sample webpage</title>
-
-<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet'
-	type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Amaranth:700'
-	rel='stylesheet' type='text/css'>
-
-<link rel="stylesheet" href="styles.css" />
-
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-<!-- This is a nice empty css. Feel free to override the theme! -->
-<link href="css/gclc.css" rel="stylesheet">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jssor.slider.mini.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var options = {
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $ChanceToShow: 2
+                },
+                $AutoPlay: true
+            };
+            var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-
-	<span id="sl_play" class="sl_command">&nbsp;</span>
-	<span id="sl_pause" class="sl_command">&nbsp;</span>
-	<span id="sl_i1" class="sl_command sl_i">&nbsp;</span>
-	<span id="sl_i2" class="sl_command sl_i">&nbsp;</span>
-	<span id="sl_i3" class="sl_command sl_i">&nbsp;</span>
-	<span id="sl_i4" class="sl_command sl_i">&nbsp;</span>
-
-	<h1>
-		<span class="cursive">Juizy</span> slideshow <span>Full CSS3/HTML5
-			slideshow (environnement work ?)</span>
-	</h1>
-	<h2 class="sread">The slideshow</h2>
-
-
-	<section id="slideshow">
-
-		<a class="commands prev commands1" href="#sl_i4" title="Go to last slide">&lt;</a>
-		<a class="commands next commands1" href="#sl_i2" title="Go to 2nd slide">&gt;</a>
-		<a class="commands prev commands2" href="#sl_i1" title="Go to 1rst slide">&lt;</a>
-		<a class="commands next commands2" href="#sl_i3" title="Go to 3rd slide">&gt;</a>
-		<a class="commands prev commands3" href="#sl_i2" title="Go to 2nd slide">&lt;</a>
-		<a class="commands next commands3" href="#sl_i4" title="Go to 4th slide">&gt;</a>
-		<a class="commands prev commands4" href="#sl_i3" title="Go to 3rd slide">&lt;</a>
-		<a class="commands next commands4" href="#sl_i1" title="Go to first slide">&gt;</a>
-		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
-		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
-
-		<div class="container">
-			<div class="c_slider"></div>
-			<div class="slider">
-				<figure>
-					<img src="../gclcimages/bach_creek_river.jpg" alt="" width="640" height="310" />
-				</figure>
-				<!--
-				-->
-				<figure>
-					<img src="../gclcimages/bach_creek_river.jpg" alt="" width="640" height="310" />
-				</figure>
-				<!--
-				-->
-				<figure>
-					<img src="../gclcimages/bach_creek_river.jpg" alt="" width="640" height="310" />
-				</figure>
-				<!--
-				-->
-				<figure>
-					<img src="../gclcimages/bach_creek_river.jpg" alt="" width="640" height="310" />
-				</figure>
-			</div>
-		</div>
-
-		<span id="timeline"></span>
-
-		<ul class="dots_commands">
-			<!--
-			-->
-			<li><a title="Show slide 1" href="#sl_i1">Slide 1</a></li>
-			<!--
-			-->
-			<li><a title="Show slide 2" href="#sl_i2">Slide 2</a></li>
-			<!--
-			-->
-			<li><a title="Show slide 3" href="#sl_i3">Slide 3</a></li>
-			<!--
-			-->
-			<li><a title="Show slide 4" href="#sl_i4">Slide 4</a></li>
-		</ul>
-
-	</section>
-	
-	<div class="container">
-		<div class="navbar-header">
-			<img src="img/logo.png" width="62" style="float: left;" />
-			<a class="navbar-brand">GreenCodeLab Challenge 2014</a>
-		</div>
-	</div>
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px;">
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
+            <div><img u="image" src="img/bach_creek_river_crop.jpg" /></div>
+            <div><img u="image" src="img/guyana_sky_clouds_crop.jpg" /></div>
+            <!-- Arrow Navigator Skin Begin -->
+                <!-- Arrow Left -->
+            <span u="arrowleft" class="jssora01l" style="width: 55px; height: 55px; top: 123px; left: 0px; z-index:100;">
+            </span>
+                <!-- Arrow Right -->
+             <span u="arrowright" class="jssora01r" style="width: 55px; height: 55px; top: 123px; right: 0px; z-index:100;">
+             </span>
+            <!-- Arrow Navigator Skin End -->
+            </div>
+            <!-- Trigger -->
+            <script>jssor_slider1_starter('slider1_container');</script>
+    </div>
 </body>
 </html>
