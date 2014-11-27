@@ -14,6 +14,73 @@
     <link href="css/mini_style.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- Scripts -->
+    <!-- We've included jQuery. But you can of course use any other lib! -->
+    <!--script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.mi.js"></script-->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jssor.slider.mini.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            //Define an array of slideshow transition code
+            var _SlideshowTransitions = [
+                {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseLinear},$Opacity:2 },
+                {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$JssorEasing$.$EaseInOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}}];
+            //There is no caption plays random transition
+            var _CaptionTransitions = [];
+
+            var options = {
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $ChanceToShow: 2
+                },
+                $SlideshowOptions: {
+                    $Class: $JssorSlideshowRunner$,
+                    $Transitions: _SlideshowTransitions,
+                    $TransitionsOrder: 1,
+                    $ShowLink: true
+                },
+                $CaptionSliderOptions: {
+                    $Class: $JssorCaptionSlider$,
+                    $CaptionTransitions: _CaptionTransitions,
+                    $PlayInMode: 1,
+                    $PlayOutMode: 3
+                },
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$,                 //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 10,                                  //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 10,                                  //[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1
+                },
+                //Avance automatiquement les images
+                $AutoPlay: true,
+                //3 secondes entre chaque image par défaut
+                //Pause sur touche ou mousehover
+                $PauseOnHover: 3
+            };
+            var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+
+            //Suite du JS
+            //Listeners des boutons pause et play
+            var pauseButton = document.getElementById("pause");
+            var playButton = document.getElementById("play");
+
+            pauseButton.addEventListener("click", function() {
+                jssor_slider1.$Pause();
+                playButton.style.display = "block";
+                pauseButton.style.display = "none";
+            });
+
+            playButton.addEventListener("click", function() {
+                jssor_slider1.$Play();
+                playButton.style.display = "none";
+                pauseButton.style.display = "block";
+            });
+        });
+    </script>
 </head>
 <body>
 <nav class="navbar glc-navbar navbar-fixed-top" role="navigation">
@@ -38,37 +105,45 @@
 <div class="container">
     <div class="row">
         <div id="slideshow">
-            <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 900px; height: 360px; margin-left:auto; margin-right: auto;">
+            <!-- pause/play Début -->
+            <!-- Pause -->
+            <span id="pause" class="pausebutton">
+             </span>
+            <!-- Play -->
+             <span id="play" class="playbutton">
+              </span>
+            <!-- pause/play Fin -->
+            <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px;">
                 <!-- Slides Container -->
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 900px; height: 360px;">
+                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
                     <div><img u="image" src="img/bach_creek_river.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
                     <div><img u="image" src="img/canoe_water_nature.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
                     <div>
                         <img u="image" src="img/guyana_sky_clouds.jpg" width="900" height="360"/>
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
                     <div><img u="image" src="img/hawaii_sky_clouds.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
                     <div><img u="image" src="img/water_nature_river.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
                     <div><img u="image" src="img/gclc.png" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 101; position: relative; color: white; text-align: center; vertical-align: bottom;">
+                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
                             Ceci est une caption en dur
                         </div>
                     </div>
@@ -81,16 +156,18 @@
                      <span u="arrowright" class="jssora01r" style="width: 54px; height: 54px; top: 123px; right: 0px; z-index:100;">
                      </span>
                     <!-- Arrow Navigator Skin End -->
-                </div>    
+                </div>
+                <div u="navigator" class="jssorb11" style="position: relative; top:310px; bottom: 16px; right: 6px; width:25px; height:25px;">
+                    <!-- bullet navigator item prototype -->
+                    <div u="prototype" style="POSITION: absolute; WIDTH: 25px; HEIGHT: 25px;"></div>
+                </div>
+                <!-- Bullet Navigator Skin End -->
             </div>
+
         </div>
+
     </div>
-    <div class="row" style="height:30px">
-    	<div u="navigator" class="jssorb11">
-			<!-- bullet navigator item prototype -->
-			<div u="prototype" style="position: absolute; width: 25px; height: 25px;"></div>
-        </div>
-    </div>
+    <div class="row" style="height:30px"> <!-- Place pour les bullets + numéro image--></div>
     <div class="row">
         <div class="col-md-4">
             <h2>Who will be the best Green developer in this latest edition ? </h2>
@@ -127,52 +204,4 @@
     </footer>
 </div>
 </body>
-<!-- We've included jQuery. But you can of course use any other lib! -->
-<!--script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.mi.js"></script-->
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/jssor.slider.mini.js"></script>
-<script>
-    jQuery(document).ready(function ($) {
-        //Define an array of slideshow transition code
-        var _SlideshowTransitions = [
-            {$Duration:1200,x:0.3,$During:{$Left:[0.3,0.7]},$Easing:{$Left:$JssorEasing$.$EaseInCubic,$Opacity:$JssorEasing$.$EaseLinear},$Opacity:2 },
-            {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$JssorEasing$.$EaseInOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}}];
-        //There is no caption plays random transition
-        var _CaptionTransitions = [];
-
-        var options = {
-            $ArrowNavigatorOptions: {
-                $Class: $JssorArrowNavigator$,
-                $ChanceToShow: 2
-            },
-            $SlideshowOptions: {
-                $Class: $JssorSlideshowRunner$,
-                $Transitions: _SlideshowTransitions,
-                $TransitionsOrder: 1,
-                $ShowLink: true
-            },
-            $CaptionSliderOptions: {
-                $Class: $JssorCaptionSlider$,
-                $CaptionTransitions: _CaptionTransitions,
-                $PlayInMode: 1,
-                $PlayOutMode: 3
-            },
-            $BulletNavigatorOptions: {
-                $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
-                $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-                $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
-                $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
-                $SpacingX: 10,                                  //[Optional] Horizontal space between each item in pixel, default value is 0
-                $SpacingY: 10,                                  //[Optional] Vertical space between each item in pixel, default value is 0
-                $Orientation: 1
-            },
-            //Avance automatiquement les images
-            $AutoPlay: true,
-            //3 secondes entre chaque image
-            $SlideDuration: 3000
-        };
-        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
-    });
-</script>
 </html>

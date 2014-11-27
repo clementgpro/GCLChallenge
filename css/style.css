@@ -31,7 +31,7 @@
             .jssorb10 .av:hover     (active mouseover)
             .jssorb10 .dn           (mousedown)
         */
- .jssorb11 div, .jssorb11 div:hover
+ .jssorb11 div, .jssorb11
  {
      background: url(../img/not-selected.png) no-repeat;
      cursor: pointer;
@@ -40,4 +40,33 @@
 {
     background: url(../img/selected.png) no-repeat;
     cursor: pointer;
+}
+.pausebutton
+{
+    position:absolute;
+    background: url(../img/sprite-square.png) no-repeat;
+    background-position: -55px 0px;
+    cursor: pointer;
+    width: 54px;
+    height: 54px;
+    display:block;
+    z-index:101;
+}
+.playbutton
+{
+    position: absolute;
+    background: url(../img/sprite-square.png) no-repeat;
+    background-position: 0px 0px;
+    cursor: pointer;
+    width: 54px;
+    height: 54px;
+    display:none;
+    z-index:101
+}
+
+.chantier
+{
+    position: relative;
+    top: 20px;
+    z-index: 150;
 }
