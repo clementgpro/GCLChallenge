@@ -32,7 +32,9 @@ JavaScript
 
 Environment
 ----------------
-- Application dev : http://192.168.1.186/
+- Dévelopement : http://192.168.1.186/
+- Preproduction : http://192.168.1.144/
+- Production : http://92.222.110.203/df55e8b431/
 - Jenkis : http://192.168.1.186:8080/
 - Sonar : http://192.168.1.186:9000/
 
