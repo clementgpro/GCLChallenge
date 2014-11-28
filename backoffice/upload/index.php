@@ -20,15 +20,16 @@ if(isset($_POST["submit"])) {
 	
 	$resize = new ServiceUtils();
 	
+	$exts = array('jpg', 'jpeg', 'png', 'bmp');
+	
 	$imgUploaded = $_FILES["fileToUpload"]["tmp_name"];
 	$imgDest = "../images/".$_FILES["fileToUpload"]["name"];
+	$ext = pathinfo($imgDest)['extension'];
 	
-	// Check if image file is a actual image or fake image
-    $check = getimagesize($imgUploaded);
-    if($check !== false && filesize($imgUploaded) <= 8388608) {
+	// Check if image file is a actual image
+    if(in_array($ext, $exts) && filesize($imgUploaded) <= 8388608) {
        move_uploaded_file($imgUploaded, $imgDest);
 	   
-		$ext = pathinfo($imgDest)['extension'];
 		$destkopImg = pathinfo($imgDest)['dirname']."/desktop/".pathinfo($imgDest)['basename'];
 		$mobileImg = pathinfo($imgDest)['dirname']."/mobile/".pathinfo($imgDest)['basename'];
        
@@ -45,8 +46,11 @@ if(isset($_POST["submit"])) {
 	  // remove uploaded file
 	  unlink($imgDest);
 	   
+    } else if (pathinfo($imgDest)['extension'] == 'prop') {
+    	// case of propertie file, we had it in backoffice/images/
+    	move_uploaded_file($imgUploaded, $imgDest);
     } else {
-        echo "<strong>File is not an image</strong>";
+    	echo "<strong>File is not an image or is too big (File should be less than 8mo)</strong>";
     }
 } else {
 	echo "<strong>No file uploaded (File should be less than 8mo)</strong>";

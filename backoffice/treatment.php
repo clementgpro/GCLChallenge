@@ -7,6 +7,7 @@
 	$fileClient = $service->list_images("images/desktop/", true);
 	
 	foreach($fileFromServ as $image) {
+		
 		if (!in_array(pathinfo($image)['basename'], $fileClient)) {
 			
 			if (filesize($image) <= 8388608) {				
