@@ -29,8 +29,8 @@ if(isset($_POST["submit"])) {
        move_uploaded_file($imgUploaded, $imgDest);
 	   
 		$ext = pathinfo($imgDest)['extension'];
-		$destkopImg = pathinfo($imgDest)['dirname']."/".pathinfo($imgDest)['filename']."_desktop.".$ext;
-		$mobileImg = pathinfo($imgDest)['dirname']."/".pathinfo($imgDest)['filename']."_mobile.".$ext;
+		$destkopImg = pathinfo($imgDest)['dirname']."/desktop/".pathinfo($imgDest)['filename']."_desktop.".$ext;
+		$mobileImg = pathinfo($imgDest)['dirname']."/mobile/".pathinfo($imgDest)['filename']."_mobile.".$ext;
        
 		// resize the image to match a width of 900px (desktop)
 	   $resize->resizeWithProportion($imgDest, $destkopImg, 900, $ext);

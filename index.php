@@ -1,6 +1,15 @@
 <?php 
 
 include 'backoffice/upload/ServiceUtils.class.php';
+require_once 'Mobile-Detect-2.8.11/Mobile_Detect.php';
+
+
+$detect = new Mobile_Detect();
+$pathInImages = "desktop";
+// Any mobile device (phones or tablets).
+if ( $detect->isMobile() ) {
+	$pathInImages = "mobile";
+}
 
 $service = new ServiceUtils();
 
@@ -11,8 +20,8 @@ if (sizeof($imagesOfServer)) {
 			// treat only file under 8mo
 			if (filesize($image) <= 8388608) {
 				$ext = pathinfo($image)['extension'];
-				$destkopImg = "backoffice/images/".pathinfo($image)['filename']."_desktop.".$ext;
-				$mobileImg = "backoffice/images/".pathinfo($image)['filename']."_mobile.".$ext;
+				$destkopImg = "backoffice/images/desktop/".pathinfo($image)['filename']."_desktop.".$ext;
+				$mobileImg = "backoffice/images/mobile/".pathinfo($image)['filename']."_mobile.".$ext;
 			
 				// service the image to match a width of 900px (desktop)
 				$service->resizeWithProportion($image, $destkopImg, 900, $ext);
@@ -28,14 +37,14 @@ if (sizeof($imagesOfServer)) {
 				unlink($image);
 		  } else {
 				// copy image without resizing
-				copy($image, "backoffice/images/".pathinfo($image)['filename']."_desktop.".pathinfo($image)['extension']);
-				copy($image, "backoffice/images/".pathinfo($image)['filename']."_mobile.".pathinfo($image)['extension']);
+				copy($image, "backoffice/images/desktop/".pathinfo($image)['filename']."_desktop.".pathinfo($image)['extension']);
+				copy($image, "backoffice/images/mobile/".pathinfo($image)['filename']."_mobile.".pathinfo($image)['extension']);
 				unlink($image);
 		  }
 		}	
 }
 
-$images = $service->list_images("backoffice/images/");
+$images = $service->list_images("backoffice/images/".$pathInImages."/");
 
 ?>
 <!DOCTYPE html>
