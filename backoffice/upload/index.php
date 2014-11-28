@@ -5,6 +5,7 @@
 <form action="index.php" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
+	<input type="hidden" name="firstTime" value="true" id="firstTime">
     <input type="submit" value="Upload Image" name="submit">
 </form>
 
@@ -18,18 +19,9 @@ include 'ServiceUtils.class.php';
 if(isset($_POST["submit"])) {	
 	
 	$resize = new ServiceUtils();
-
+	
 	$imgUploaded = $_FILES["fileToUpload"]["tmp_name"];
 	$imgDest = "../images/".$_FILES["fileToUpload"]["name"];
-	echo filesize($imgUploaded);
-	// treat only file under 8mo
-	if (filesize($imgUploaded) > 8388608) {
-		echo "test";
-		// copy image without resizing
-		move_uploaded_file($imgUploaded, "../images/".pathinfo($image)['filename']."_desktop.".pathinfo($image)['extension']);
-		move_uploaded_file($imgUploaded, "../images/".pathinfo($image)['filename']."_mobile.".pathinfo($image)['extension']);
-		return;
-	}
 	
 	// Check if image file is a actual image or fake image
     $check = getimagesize($imgUploaded);
@@ -56,5 +48,7 @@ if(isset($_POST["submit"])) {
     } else {
         echo "<strong>File is not an image</strong>";
     }
+} else {
+	echo "<strong>No file uploaded (File should be less than 8mo)</strong>";
 }
-?>
+?>	
