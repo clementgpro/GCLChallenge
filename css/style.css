@@ -133,7 +133,6 @@
 {
   position: absolute;
   background: url(../img/sprite-square.png) no-repeat;
-  background-position: 0px -55px;
   cursor: pointer;
   width: 20px;
   height: 20px;
@@ -147,16 +146,38 @@
 {
     position:absolute;
     background: url(../img/sprite-square.png) no-repeat;
-    background-position: -21px -55px;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
     display:block;
     z-index:101;
     top:5px;
     right:5px;
 }
 
+.play_desktop, .pause_desktop{
+  width: 26px;
+  height: 26px;
+}
+
+.play_mobile, .pause_mobile{
+  width: 20px;
+  height: 20px;
+}
+
+.playbutton.play_desktop{
+  background-position: 0px -97px;
+}
+
+.pausebutton.pause_desktop{
+  background-position: -26px -97px;
+}
+
+.playbutton.play_mobile{
+  background-position: 0px -55px;
+}
+
+.pausebutton.pause_mobile{
+  background-position: -21px -55px;
+}
 
 .countslide{
   position:absolute;

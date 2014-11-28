@@ -130,8 +130,8 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
 
         <div id="slider1_container" class="alignh slider_<?php echo $pathInImages ?>">
           <!-- controls -->
-          <span id="pause" class="pausebutton"></span>
-          <span id="play" class="playbutton"></span>
+          <span id="pause" class="pause_<?php echo $pathInImages ?> pausebutton"></span>
+          <span id="play" class="play_<?php echo $pathInImages ?> playbutton"></span>
           <span u="arrowleft" class="arrow_<?php echo $pathInImages ?> jssora01l"></span>
           <span u="arrowright" class="arrow_<?php echo $pathInImages ?> jssora01r"></span>
 
