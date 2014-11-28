@@ -14,13 +14,30 @@
     display: block;
     background: url("../img/sprite-square.png") no-repeat;
     overflow:hidden;
+    width: 54px; 
+	height: 54px;
+	top: 50%;
+	z-index:1;
 }
-.jssora01l, .jssora01ldn { background-position: 0px -110px; }
-.jssora01r, .jssora01rdn { background-position: 0px -55px; }
+.jssora01l, .jssora01ldn { 
+	background-position: 0px -110px; 
+	left: 0px;
+}
+.jssora01r, .jssora01rdn { 
+	background-position: 0px -55px; 
+	right: 0px; 
+}
 
 .captionBlack {
+	display:block;
     background: none repeat scroll 0% 0% rgba(0, 0, 0, 0.4);
-    vertical-align: bottom;
+    z-index: 1;
+    position: absolute;
+    color: white;
+    text-align: center;
+    bottom: 0px;
+    width:100%;
+    font-size:16px;
 }
 
 /* Bullet Navigator Skin Begin */
@@ -40,7 +57,43 @@
 {
     background: url(../img/selected.png) no-repeat;
     cursor: pointer;
+    right: 0px;
 }
+
+#navigation {
+	position: absolute;
+	bottom: 0;
+	height: 0px !important;
+	right: 0px !important;
+	left: auto !important;
+}
+
+/* === SLIDESHOW === */
+.alignh{
+	margin-left:auto;
+	margin-right:auto;
+	width: 900px;
+	height: 360px;
+}
+
+#slider1_container{
+	position: relative; 
+	top: 0px;
+	left: 0px;
+	width: 900px;
+	height: 360px;	
+}
+
+.slides{
+	cursor: move; 
+	position: absolute; 
+	overflow: hidden; 
+	left: 0px; 
+	top: 0px; 
+	width: 900px; 
+	height: 360px;
+}
+
 .pausebutton
 {
     position:absolute;
@@ -51,6 +104,8 @@
     height: 54px;
     display:block;
     z-index:101;
+    top:5px;
+    right:5px;
 }
 .playbutton
 {
@@ -61,12 +116,6 @@
     width: 54px;
     height: 54px;
     display:none;
-    z-index:101
-}
-
-.chantier
-{
-    position: relative;
-    top: 20px;
-    z-index: 150;
+    z-index:101;
+    right:0px;
 }

@@ -104,69 +104,56 @@
 
 <div class="container">
     <div class="row">
-        <div id="slideshow">
-            <!-- pause/play Début -->
-            <!-- Pause -->
-            <span id="pause" class="pausebutton">
-             </span>
-            <!-- Play -->
-             <span id="play" class="playbutton">
-              </span>
-            <!-- pause/play Fin -->
-            <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px;">
-                <!-- Slides Container -->
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
-                    <div><img u="image" src="img/bach_creek_river.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
+            
+        <div id="slider1_container" class="alignh">
+        	<!-- controls -->
+        	<span id="pause" class="pausebutton"></span>
+        	<span id="play" class="playbutton"></span>
+			<span u="arrowleft" class="jssora01l"></span>
+			<span u="arrowright" class="jssora01r"></span>
+		
+            <!-- Slides Container -->
+            <div u="slides" class="slides">
+                <div><img u="image" src="img/bach_creek_river.jpg" width="900" height="360" />
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
                     </div>
-                    <div><img u="image" src="img/canoe_water_nature.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
-                    </div>
-                    <div>
-                        <img u="image" src="img/guyana_sky_clouds.jpg" width="900" height="360"/>
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
-                    </div>
-                    <div><img u="image" src="img/hawaii_sky_clouds.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
-                    </div>
-                    <div><img u="image" src="img/water_nature_river.jpg" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
-                    </div>
-                    <div><img u="image" src="img/gclc.png" width="900" height="360" />
-                        <div u="caption" class="captionBlack" style=" z-index: 100; position: relative; color: white; text-align: center; vertical-align: bottom;">
-                            Ceci est une caption en dur
-                        </div>
-                    </div>
-
-                    <!-- Arrow Navigator Skin Begin -->
-                    <!-- Arrow Left -->
-                    <span u="arrowleft" class="jssora01l" style="width: 54px; height: 54px; top: 123px; left: 0px; z-index:100;">
-                    </span>
-                    <!-- Arrow Right -->
-                     <span u="arrowright" class="jssora01r" style="width: 54px; height: 54px; top: 123px; right: 0px; z-index:100;">
-                     </span>
-                    <!-- Arrow Navigator Skin End -->
                 </div>
-                <div u="navigator" class="jssorb11" style="position: relative; top:310px; bottom: 16px; right: 6px; width:25px; height:25px;">
-                    <!-- bullet navigator item prototype -->
-                    <div u="prototype" style="POSITION: absolute; WIDTH: 25px; HEIGHT: 25px;"></div>
+                <div><img u="image" src="img/canoe_water_nature.jpg" width="900" height="360" />
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
+                    </div>
                 </div>
-                <!-- Bullet Navigator Skin End -->
+                <div>
+                    <img u="image" src="img/guyana_sky_clouds.jpg" width="900" height="360"/>
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
+                    </div>
+                </div>
+                <div><img u="image" src="img/hawaii_sky_clouds.jpg" width="900" height="360" />
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
+                    </div>
+                </div>
+                <div><img u="image" src="img/water_nature_river.jpg" width="900" height="360" />
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
+                    </div>
+                </div>
+                <div><img u="image" src="img/gclc.png" width="900" height="360" />
+                    <div u="caption" class="captionBlack">
+                        Ceci est une caption en dur
+                    </div>
+                </div>
             </div>
-
+           
+           	<div u="navigator" class="jssorb11" id="navigation">
+                <!-- bullet navigator item prototype -->
+                <div u="prototype" style="POSITION: absolute; WIDTH: 25px; HEIGHT: 25px;"></div>
+         	</div>
         </div>
-
     </div>
+
     <div class="row" style="height:30px"> <!-- Place pour les bullets + numéro image--></div>
     <div class="row">
         <div class="col-md-4">
