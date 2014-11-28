@@ -173,16 +173,14 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
     <div class="container">
       <div class="row">
 
-        <div id="slider1_container" class="alignh">
+        <div id="slider1_container" class="alignh <?php echo $pathInImages ?>">
           <!-- controls -->
           <span id="pause" class="pausebutton"></span>
           <span id="play" class="playbutton"></span>
           <span u="arrowleft" class="jssora01l"></span>
           <span u="arrowright" class="jssora01r"></span>
 
-
-
-          <div u="slides" class="slides">
+          <div u="slides" class="slides <?php echo $pathInImages ?>">
             <!-- Slides Container -->
             <?php
               $slideshow = "";
