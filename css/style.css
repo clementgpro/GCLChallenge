@@ -62,8 +62,7 @@
 
 #navigation {
 	position: absolute;
-	bottom: 0;
-	height: 0px !important;
+  	bottom: -35px;
 	right: 0px !important;
 	left: auto !important;
 }
@@ -123,4 +122,10 @@
     z-index:101;
     top:5px;
     right:5px;
+}
+
+.countslide{
+  position:absolute;
+  height:30px;
+  bottom:-35px;
 }

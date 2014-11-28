@@ -126,7 +126,7 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
     </div>
 
     <div class="container">
-      <div class="row">
+      <div class="row" style="padding-bottom:5em;">
 
         <div id="slider1_container" class="alignh <?php echo $pathInImages ?>">
           <!-- controls -->
@@ -155,14 +155,17 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
             <!-- bullet navigator item prototype -->
             <div u="prototype" style="POSITION: absolute; WIDTH: 25px; HEIGHT: 25px;"></div>
           </div>
+
+          <div class="countslide">
+            <!-- Numero image / Total images -->
+            <span u="image" id="current_index">0</span>
+            <span u="image" id="number_pictures"></span>
+          </div>
         </div>
+
       </div>
 
-      <div class="row" style="height:30px">
-        <!-- Numero image / Total images -->
-        <span id="current_index">0</span>
-        <span id="number_pictures"></span>
-      </div>
+
       <div class="row">
         <div class="col-md-4">
           <h2>Who will be the best Green developer in this latest edition ? </h2>
