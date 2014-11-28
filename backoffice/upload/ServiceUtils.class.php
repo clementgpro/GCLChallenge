@@ -1,7 +1,10 @@
 <?php
-include 'Bmp.php';
+include 'BMP.php';
 class ServiceUtils {
+	
 	function resizeWithProportion($imgSource, $imgDest, $widthSize, $ext) {
+		ini_set("gd.jpeg_ignore_warning", 1);
+		
 		$img_size = getimagesize ( $imgSource );
 		$W_Src = $img_size [0]; // largeur
 		$H_Src = $img_size [1]; // hauteur
@@ -14,7 +17,6 @@ class ServiceUtils {
 		if ($ext == 'jpg' || $ext == 'jpeg') {
 			$Ress_Src = imagecreatefromjpeg ( $imgSource );
 		} else if ($ext == 'png') {
-			// png2jpg($imgSource, $Ress_Src);
 			$Ress_Src = imagecreatefrompng ( $imgSource );
 		} else if ($ext == 'bmp') {
 			$Ress_Src = Bmp::imagecreatefrombmp ( $imgSource );
@@ -24,12 +26,24 @@ class ServiceUtils {
 			echo 'extension unknown';
 		}
 		
+		if (!$Ress_Src) {
+			 /* Création d'une image vide */
+			$Ress_Src  = imagecreatetruecolor(150, 30);
+			$bgc = imagecolorallocate($Ress_Src, 255, 255, 255);
+			$tc  = imagecolorallocate($Ress_Src, 0, 0, 0);
+
+			imagefilledrectangle($Ress_Src, 0, 0, 150, 30, $bgc);
+
+			/* On y affiche un message d'erreur */
+			imagestring($Ress_Src, 1, 5, 5, 'Erreur de chargement : image corrompu ' . $imgname, $tc);
+		}
+		
 		imagecopyresampled ( $Ress_Dst, $Ress_Src, 0, 0, 0, 0, $W, $H, $W_Src, $H_Src );
 		
 		if ($ext == 'jpg' || $ext == 'jpeg') {
-			$imagejpeg ( $Ress_Dst, $imgDest, 90 );
+			imagejpeg ( $Ress_Dst, $imgDest, 90 );
 		} else if ($ext == 'png') {
-			imagepng ( $Ress_Dst, $imgDest, 90 );
+			imagepng ( $Ress_Dst, $imgDest);
 		} else if ($ext == 'bmp') {
 			imagebmp ( $Ress_Dst, $imgDest, 90 );
 		} else if ($ext == 'gif') {
@@ -42,19 +56,10 @@ class ServiceUtils {
 		imagedestroy ( $Ress_Src );
 		imagedestroy ( $Ress_Dst );
 	}
-	function png2jpg($filePath, $bg) {
-		$image = imagecreatefrompng ( $filePath );
-		$bg = imagecreatetruecolor ( imagesx ( $image ), imagesy ( $image ) );
-		imagefill ( $bg, 0, 0, imagecolorallocate ( $bg, 255, 255, 255 ) );
-		imagealphablending ( $bg, TRUE );
-		imagecopy ( $bg, $image, 0, 0, 0, 0, imagesx ( $image ), imagesy ( $image ) );
-		imagedestroy ( $image );
-		$quality = 50; // 0 = worst / smaller file, 100 = better / bigger file
-		imagejpeg ( $bg, $filePath . ".jpg", $quality );
-		imagedestroy ( $bg );
-	}
 	
 	function resizeCrop($imgSource, $imgDest, $heightSize, $ext) {
+		ini_set("gd.jpeg_ignore_warning", 1);
+	
 		$img_size = getimagesize ( $imgSource );
 		$W_Src = $img_size [0]; // largeur
 		$H_Src = $img_size [1]; // hauteur
@@ -67,7 +72,6 @@ class ServiceUtils {
 		if ($ext == 'jpg' || $ext == 'jpeg') {
 			$Ress_Src = imagecreatefromjpeg ( $imgSource );
 		} else if ($ext == 'png') {
-			// png2jpg($imgSource, $Ress_Src);
 			$Ress_Src = imagecreatefrompng ( $imgSource );
 		} else if ($ext == 'bmp') {
 			$Ress_Src = Bmp::imagecreatefrombmp ( $imgSource );
@@ -75,6 +79,18 @@ class ServiceUtils {
 			$Ress_Src = imagecreatefromgif ( $imgSource );
 		} else {
 			echo 'extension unknown';
+		}
+		
+		if (!$Ress_Src) {
+			 /* Création d'une image vide */
+			$Ress_Src  = imagecreatetruecolor(150, 30);
+			$bgc = imagecolorallocate($Ress_Src, 255, 255, 255);
+			$tc  = imagecolorallocate($Ress_Src, 0, 0, 0);
+
+			imagefilledrectangle($Ress_Src, 0, 0, 150, 30, $bgc);
+
+			/* On y affiche un message d'erreur */
+			imagestring($Ress_Src, 1, 5, 5, 'Erreur de chargement : image corrompu ' . $imgname, $tc);
 		}
 		
 		if ($W_Src < $H_Src) {
@@ -100,9 +116,9 @@ class ServiceUtils {
 		imagecopyresampled ( $Ress_Dst, $Ress_Src, $X_Dst, $Y_Dst, $X_Src, $Y_Src, $W_copy, $H_copy, $W_copy, $H_copy );
 		
 		if ($ext == 'jpg' || $ext == 'jpeg') {
-			$imagejpeg ( $Ress_Dst, $imgDest, 90 );
+			imagejpeg ( $Ress_Dst, $imgDest, 90 );
 		} else if ($ext == 'png') {
-			imagepng ( $Ress_Dst, $imgDest, 90 );
+			imagepng ( $Ress_Dst, $imgDest);
 		} else if ($ext == 'bmp') {
 			imagebmp ( $Ress_Dst, $imgDest, 90 );
 		} else if ($ext == 'gif') {
@@ -117,18 +133,20 @@ class ServiceUtils {
 	}
 	
 	function list_images($pathToDir) {
+	
 		// authorized extensions
-		$ext = array('jpg', 'jpeg', 'bmp', 'bnp');
+		$ext = array('jpg', 'jpeg', 'bmp', 'png');
 		$ret = array();
 		if ($handle = opendir ( $pathToDir )) {			
 			while ( false !== ($entry = readdir ( $handle )) ) {
-
+				
 				if (in_array(pathinfo($entry)['extension'], $ext)) {
 					$ret[] = $pathToDir.$entry;
 				}
 			}
 			closedir ( $handle );
 		}
+		return $ret;
 	}
 }
 
