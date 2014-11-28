@@ -3,7 +3,6 @@
 include 'backoffice/upload/ServiceUtils.class.php';
 require_once 'Mobile-Detect-2.8.11/Mobile_Detect.php';
 
-
 $detect = new Mobile_Detect();
 $pathInImages = "desktop";
 // Any mobile device (phones or tablets).
@@ -12,50 +11,6 @@ if ( $detect->isMobile() ) {
 }
 
 $service = new ServiceUtils();
-
-$imagesOfServer = $service->list_images("../gclcimages/");
-if (sizeof($imagesOfServer)) {
-
-  foreach ($imagesOfServer as $image) {
-    // treat only file under 8mo
-    if (filesize($image) <= 8388608) {
-      $ext = pathinfo($image)['extension'];
-      $destkopImg = "backoffice/images/desktop/".pathinfo($image)['basename'];
-      $mobileImg = "backoffice/images/mobile/".pathinfo($image)['basename'];
-
-      // service the image to match a width of 900px (desktop)
-      $service->resizeWithProportion($image, $destkopImg, 900, $ext);
-      // crop the image to match the height of 360px (desktop)
-      $service->resizeCrop($destkopImg, $destkopImg, 360, $ext);
-
-      // resize the image to match a width of 320px (mobile)
-      $service->resizeWithProportion($image, $mobileImg, 320, $ext);
-      // crop the image to match the height of 128px (mobile)
-      $service->resizeCrop($mobileImg, $mobileImg, 128, $ext);
-      
-      // move properties into backoffice
-	  $propName = "/".pathinfo($image)['filename'].".prop";
-      copy(pathinfo($image)['dirname'].$propName, "backoffice/images".$propName);
-
-      // remove uploaded file
-	  unlink(pathinfo($image)['dirname'].$propName);
-      unlink($image);
-    } else {
-      // copy image without resizing
-      copy($image, "backoffice/images/desktop/".pathinfo($image)['basename']);
-      copy($image, "backoffice/images/mobile/".pathinfo($image)['basename']);
-      
-      // move properties into backoffice
-		$propName = "/".pathinfo($image)['filename'].".prop";
-      copy(pathinfo($image)['dirname'].$propName, "backoffice/images".$propName);
-      
-	  // remove file
-	  unlink(pathinfo($image)['dirname'].$propName);
-      unlink($image);
-    }
-  }
-}
-
 $images = $service->list_images("backoffice/images/".$pathInImages."/");
 
 ?>

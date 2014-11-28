@@ -132,16 +132,15 @@ class ServiceUtils {
 		imagedestroy ( $Ress_Dst );
 	}
 	
-	function list_images($pathToDir) {
+	function list_images($pathToDir, $onlyBasename=false) {
 	
 		// authorized extensions
 		$ext = array('jpg', 'jpeg', 'bmp', 'png');
 		$ret = array();
 		if ($handle = opendir ( $pathToDir )) {			
 			while ( false !== ($entry = readdir ( $handle )) ) {
-				
 				if (in_array(pathinfo($entry)['extension'], $ext)) {
-					$ret[] = $pathToDir.$entry;
+					$ret[] = ($onlyBasename) ? $entry : $pathToDir.$entry;
 				}
 			}
 			closedir ( $handle );
