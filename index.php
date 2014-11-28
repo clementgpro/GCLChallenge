@@ -95,6 +95,13 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
       playButton.style.display = "none";
       pauseButton.style.display = "block";
     });
+
+    //Numeros d'image
+    document.getElementById("number_pictures").innerHTML = " / "+jssor_slider1.$SlidesCount();
+    function DisplayIndex() {
+      document.getElementById("current_index").innerHTML = jssor_slider1.$CurrentIndex() + 1;
+    };
+    jssor_slider1.$On($JssorSlider$.$EVT_PARK, DisplayIndex);
   });
 </script>
 </head>
@@ -121,21 +128,19 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
     <div class="container">
       <div class="row">
 
-        <div id="slider1_container" class="alignh">
+        <div id="slider1_container" class="alignh <?php echo $pathInImages ?>">
           <!-- controls -->
           <span id="pause" class="pausebutton"></span>
           <span id="play" class="playbutton"></span>
           <span u="arrowleft" class="jssora01l"></span>
           <span u="arrowright" class="jssora01r"></span>
 
-
-
-          <div u="slides" class="slides">
+          <div u="slides" class="slides <?php echo $pathInImages ?>">
             <!-- Slides Container -->
             <?php
               $slideshow = "";
               foreach ($images as $image) {
-                $slideshow .= '<div><img u="image" src='.$image.' width="900" height="360" />
+                $slideshow .= '<div><img u="image" src='.$image.'  />
                 <div u="caption" class="captionBlack">
                 '.$service->get_description_from_prop("backoffice/images/".pathinfo($image)['filename'].".prop").'
                 </div>
@@ -144,7 +149,7 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
               echo $slideshow;
             ?>
           </div>
-          
+
           <!-- navigators -->
           <div u="navigator" class="jssorb11" id="navigation">
             <!-- bullet navigator item prototype -->
@@ -153,7 +158,11 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
         </div>
       </div>
 
-      <div class="row" style="height:30px"> <!-- Place pour les bullets + numéro image--></div>
+      <div class="row" style="height:30px">
+        <!-- Numero image / Total images -->
+        <span id="current_index">0</span>
+        <span id="number_pictures"></span>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <h2>Who will be the best Green developer in this latest edition ? </h2>
