@@ -176,7 +176,8 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
               }
               echo $slideshow;
             ?>
-
+          </div>
+          
           <!-- navigators -->
           <div u="navigator" class="jssorb11" id="navigation">
             <!-- bullet navigator item prototype -->
