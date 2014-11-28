@@ -35,7 +35,7 @@ class ServiceUtils {
 			imagefilledrectangle($Ress_Src, 0, 0, 150, 30, $bgc);
 
 			/* On y affiche un message d'erreur */
-			imagestring($Ress_Src, 1, 5, 5, 'Erreur de chargement : image corrompu ' . $imgname, $tc);
+			imagestring($Ress_Src, 1, 5, 5, 'Erreur de chargement : image corrompu ', $tc);
 		}
 		
 		imagecopyresampled ( $Ress_Dst, $Ress_Src, 0, 0, 0, 0, $W, $H, $W_Src, $H_Src );
@@ -147,6 +147,19 @@ class ServiceUtils {
 			closedir ( $handle );
 		}
 		return $ret;
+	}
+	
+	function get_description_from_prop($pathToProp) {
+		$descr = "";
+		if (file_exists($pathToProp)) {
+			$content = file_get_contents($pathToProp);
+			$index = strpos($content, "Description");
+			if ($index > 0) {
+				$index += 12;
+				$descr = substr($content, $index, strlen($content));
+			}			
+		}
+		return $descr; 
 	}
 }
 

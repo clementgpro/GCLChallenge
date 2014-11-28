@@ -20,8 +20,8 @@ if (sizeof($imagesOfServer)) {
     // treat only file under 8mo
     if (filesize($image) <= 8388608) {
       $ext = pathinfo($image)['extension'];
-      $destkopImg = "backoffice/images/desktop/".pathinfo($image)['filename']."_desktop.".$ext;
-      $mobileImg = "backoffice/images/mobile/".pathinfo($image)['filename']."_mobile.".$ext;
+      $destkopImg = "backoffice/images/desktop/".pathinfo($image)['basename'];
+      $mobileImg = "backoffice/images/mobile/".pathinfo($image)['basename'];
 
       // service the image to match a width of 900px (desktop)
       $service->resizeWithProportion($image, $destkopImg, 900, $ext);
@@ -32,13 +32,25 @@ if (sizeof($imagesOfServer)) {
       $service->resizeWithProportion($image, $mobileImg, 320, $ext);
       // crop the image to match the height of 128px (mobile)
       $service->resizeCrop($mobileImg, $mobileImg, 128, $ext);
+      
+      // move properties into backoffice
+	  $propName = "/".pathinfo($image)['filename'].".prop";
+      copy(pathinfo($image)['dirname'].$propName, "backoffice/images".$propName);
 
       // remove uploaded file
+	  unlink(pathinfo($image)['dirname'].$propName);
       unlink($image);
     } else {
       // copy image without resizing
-      copy($image, "backoffice/images/desktop/".pathinfo($image)['filename']."_desktop.".pathinfo($image)['extension']);
-      copy($image, "backoffice/images/mobile/".pathinfo($image)['filename']."_mobile.".pathinfo($image)['extension']);
+      copy($image, "backoffice/images/desktop/".pathinfo($image)['basename']);
+      copy($image, "backoffice/images/mobile/".pathinfo($image)['basename']);
+      
+      // move properties into backoffice
+		$propName = "/".pathinfo($image)['filename'].".prop";
+      copy(pathinfo($image)['dirname'].$propName, "backoffice/images".$propName);
+      
+	  // remove file
+	  unlink(pathinfo($image)['dirname'].$propName);
       unlink($image);
     }
   }
@@ -170,7 +182,7 @@ $images = $service->list_images("backoffice/images/".$pathInImages."/");
               foreach ($images as $image) {
                 $slideshow .= '<div><img u="image" src='.$image.' width="900" height="360" />
                 <div u="caption" class="captionBlack">
-                Ceci est une caption en dur
+                '.$service->get_description_from_prop("backoffice/images/".pathinfo($image)['filename'].".prop").'
                 </div>
                 </div>';
               }
