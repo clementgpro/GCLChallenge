@@ -69,19 +69,25 @@
 }
 
 /* === SLIDESHOW === */
+.desktop{
+  width: 900px;
+  height: 360px;
+}
+
+.mobile{
+  width:300px;
+  height:128px;
+}
+
 .alignh{
 	margin-left:auto;
 	margin-right:auto;
-	width: 900px;
-	height: 360px;
 }
 
 #slider1_container{
 	position: relative;
 	top: 0px;
 	left: 0px;
-	width: 900px;
-	height: 360px;
 }
 
 .slides{
@@ -90,8 +96,6 @@
 	overflow: hidden;
 	left: 0px;
 	top: 0px;
-	width: 900px;
-	height: 360px;
 }
 
 .pausebutton
