@@ -150,14 +150,23 @@ class ServiceUtils {
 	
 	function get_description_from_prop($pathToProp) {
 		$descr = "";
-		if (file_exists($pathToProp)) {
-			$content = file_get_contents($pathToProp);
-			$index = strpos($content, "Description");
-			if ($index > 0) {
-				$index += 12;
-				$descr = substr($content, $index, strlen($content));
-			}			
+		$fileName = pathinfo($pathToProp)['filename'];
+		if (xcache_isset($fileName)) {
+			console.log("cache");
+			$descr = xcache_get($fileName);
+		} else {
+			if (file_exists($pathToProp)) {
+				$content = file_get_contents($pathToProp);
+				$index = strpos($content, "Description");
+				if ($index > 0) {
+					$index += 12;
+					$descr = substr($content, $index, strlen($content));
+					xcache_set($fileName, $descr);
+					console.log("pas cache");
+				}
+			}
 		}
+		
 		return $descr; 
 	}
 }
