@@ -3,8 +3,8 @@
 	require_once 'upload/ServiceUtils.class.php';
 
 	$service = new ServiceUtils();
-	$fileFromServ = $service->list_images("../../gclcimages/");
-	$fileClient = $service->list_images("images/desktop/", true);
+	$fileFromServ = $service->list_images(__DIR__."/../../gclcimages/");
+	$fileClient = $service->list_images(__DIR__."/images/desktop/", true);
 	
 	foreach($fileFromServ as $image) {
 		
@@ -12,8 +12,8 @@
 			
 			if (filesize($image) <= 8388608) {				
 				$ext = pathinfo($image)['extension'];
-				$destkopImg = "images/desktop/".pathinfo($image)['basename'];
-				$mobileImg = "images/mobile/".pathinfo($image)['basename'];
+				$destkopImg =__DIR__."/images/desktop/".pathinfo($image)['basename'];
+				$mobileImg = __DIR__."/images/mobile/".pathinfo($image)['basename'];
 			
 				// service the image to match a width of 900px (desktop)
 				$service->resizeWithProportion($image, $destkopImg, 900, $ext);
@@ -27,7 +27,7 @@
 			
 				// move properties into backoffice
 				$propName = "/".pathinfo($image)['filename'].".prop";
-				copy(pathinfo($image)['dirname'].$propName, "images".$propName);				
+				copy(pathinfo($image)['dirname'].$propName, __DIR__."/images".$propName);				
 			}			
 		}
 	}
